@@ -73,7 +73,6 @@ public class ArrayCustomerList {
         return null;
     }
 
-
     public Customer binary_search(String customer_name) {
         if(isEmpty()) return null;
 
@@ -124,7 +123,7 @@ public class ArrayCustomerList {
     public void bubble_sort_for_id() {
         for(int pass = 0; pass <= top; pass++)
             for(int step = 0; step < pass; step++)
-                if(customers_array[step].get_contract_id() > customers_array[step+1].get_contract_id()) {
+                if(customers_array[step].get_contract_id() < customers_array[step+1].get_contract_id()) {
                     Customer temp = customers_array[step];
                     customers_array[step] = customers_array[step+1];
                     customers_array[step+1] = temp;
@@ -149,14 +148,12 @@ public class ArrayCustomerList {
         }
     }
 
-    // Insertion Sort
-    public void insertion_sort() {
+    public void selection_sort_for_id() {
         for(int pass = 1; pass <= top; pass++) {
             int index = pass - 1;
             Customer key = customers_array[pass];
 
-            while(index >= 0
-                    && customers_array[index].compareTo(customers_array[pass])) {
+            while(index >= 0 && customers_array[index].get_contract_id() < customers_array[pass].get_contract_id()) {
                 customers_array[index+1] = customers_array[index];
                 index--;
             }
@@ -165,12 +162,14 @@ public class ArrayCustomerList {
         }
     }
 
-    public void selection_sort_for_id() {
+    // Insertion Sort
+    public void insertion_sort() {
         for(int pass = 1; pass <= top; pass++) {
             int index = pass - 1;
             Customer key = customers_array[pass];
 
-            while(index >= 0 && customers_array[index].get_contract_id() > customers_array[pass].get_contract_id()) {
+            while(index >= 0
+                    && customers_array[index].compareTo(customers_array[pass])) {
                 customers_array[index+1] = customers_array[index];
                 index--;
             }

@@ -13,13 +13,12 @@ public class CustomerLinkedList {
 
     // Data Fields
     private Node head;
-    private Node sorted_head;
     private int filled;
 
     // No need to make Constructor
 
     // Addition (At end)
-    public void insert(Customer customer) {
+    public boolean insert(Customer customer) {
         if(head == null)
             head = new Node(customer, null);
         else {
@@ -30,6 +29,7 @@ public class CustomerLinkedList {
 
             pointer.next = new Node(customer, null);
         } filled++;
+        return true;
     }
 
     // Deletion (Name, Contract ID)
@@ -60,6 +60,7 @@ public class CustomerLinkedList {
         } else if(head.data.get_contract_id() == customer_contract_id) {
             head = head.next;
             filled--;
+            return true;
         } else {
             Node previous = head, pointer = head.next;
 
@@ -68,6 +69,7 @@ public class CustomerLinkedList {
                 if(pointer.data.get_contract_id() == customer_contract_id) {
                     previous.next = pointer.next;
                     filled--;
+                    return true;
                 }
 
                 pointer = pointer.next;
@@ -138,6 +140,7 @@ public class CustomerLinkedList {
 
         return null;
     }
+
     public Customer binary_search(int customer_contract_id) {
         Node start = head;
         Node last = null;
@@ -267,9 +270,9 @@ public class CustomerLinkedList {
     }
 
     // Insertion Sort
-    void insertion_sort() {
+    public void insertion_sort() {
         Node current = head;
-        sorted_head = null;
+        Node sorted_head = null;
 
         while (current != null) {
             Node next = current.next;
@@ -288,7 +291,6 @@ public class CustomerLinkedList {
             System.out.println("If result: sorted head is null");
 
         if (sorted_head == null || new_node.data.compareTo(sorted_head.data)) {
-//            Node temp = new_node;
             new_node.next = sorted_head;
             sorted_head = new_node;
         } else {
@@ -304,7 +306,14 @@ public class CustomerLinkedList {
     }
 
     // Merge Sort
+    public void merge_sort() {
+        System.out.println("Merge sort not implemented in Linked List");
+    }
+
     // Heap Sort
+    public void heap_sort() {
+        System.out.println("Heap sort not implemented in Linked List");
+    }
 
     // display() Method (Print out Objects of array)
     public void display() {
@@ -322,7 +331,7 @@ public class CustomerLinkedList {
     }
 
     // isEmpty() Method
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return head == null;
     }
 }
