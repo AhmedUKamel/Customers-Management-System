@@ -9,7 +9,46 @@ public class Main {
 
     // Main Function
     public static void main(String [] args) {
-        run();
+//        run();
+        test2();
+//        Customer a = new Customer("A", 0, "", "", 0, 0);
+//        Customer b = new Customer("B", 0, "", "", 0, 0);
+//        System.out.println(b.compareTo(a));
+    }
+
+    public static void test() {
+        CustomerLinkedList array = new CustomerLinkedList();
+
+        array.insert(new Customer("Bahaa", 400, "Italy", "010", 320, 3600));
+        array.insert(new Customer("Zain", 200, "Chines", "015", 10, 120));
+        array.insert(new Customer("Wael", 300, "Indian", "012", 22, 200));
+        array.insert(new Customer("Ahmed", 100, "Egyptian", "011", 150, 450));
+
+//        Customer result = array.binary_search(300);
+//        if(result != null)
+//            System.out.println(result.toString());
+        array.display();
+        array.selection_sort_for_id();
+        System.out.println();
+        System.out.println();
+        array.display();
+    }
+    public static void test2() {
+        ArrayCustomerList array = new ArrayCustomerList();
+
+        array.insert(new Customer("Bahaa", 400, "Italy", "010", 320, 3600));
+        array.insert(new Customer("Zain", 200, "Chines", "015", 10, 120));
+        array.insert(new Customer("Wael", 300, "Indian", "012", 22, 200));
+        array.insert(new Customer("Ahmed", 100, "Egyptian", "011", 150, 450));
+
+//        Customer result = array.binary_search(300);
+//        if(result != null)
+//            System.out.println(result.toString());
+        array.display();
+        array.selection_sort_for_id();
+        System.out.println();
+        System.out.println();
+        array.display();
     }
 
     // Read File Method (Array List, Linked List)
@@ -21,8 +60,6 @@ public class Main {
             while(reader.hasNextLine()) {
                 String[] splited = reader.nextLine().split("-");
 
-                for(int i =0; i <splited.length;i++)System.out.print(splited[i]+">");
-
                 array.insert(new    Customer(splited[0],                // Name
                                     Integer.parseInt(splited[1]),       // Contract ID
                                     splited[2],                         // Nationality
@@ -30,7 +67,6 @@ public class Main {
                                     Double.parseDouble(splited[4]),     // Current Bill
                                     Double.parseDouble(splited[5]))     // Accumulated Bill
                 );
-                System.out.println("Finish insertion");
             }
 
             return true;
@@ -114,7 +150,7 @@ public class Main {
     public static void read_file() {
         while(true) {
             try {
-                System.out.print("Enter path (Enter '\\\\' instead of '\\'): ");
+                System.out.print("Enter path: ");
                 String path = sc.nextLine();
 
                 ArrayCustomerList array = new ArrayCustomerList();
@@ -195,7 +231,7 @@ public class Main {
                                     "\nAdd another customer ?" +
                                     "\n\t1.YES" +
                                     "\n\t2.No" +
-                                    "Choice: ");
+                                    "\n\tChoice: ");
 
                     int answer = sc.nextInt();
                     sc.nextLine();
@@ -295,7 +331,7 @@ public class Main {
                                         "\n\t4.Phone" +
                                         "\n\t5.Current bill" +
                                         "\n\t6.Back" +
-                                        "Choice: ");
+                                        "\n\tChoice: ");
                             int code = sc.nextInt();
                             sc.nextLine();
 
@@ -331,7 +367,7 @@ public class Main {
                             }
                         }
                     }  else
-                        System.out.println("Customer not found");
+                        System.out.println("Customer not found\n\tTry again ?");
 
                     System.out.print("\t1.YES\n\t2.NO\n\tChoice: ");
                     int choice = sc.nextInt();
@@ -410,7 +446,7 @@ public class Main {
                 sc.nextLine();
 
                 if (answer == 2) {
-                    System.out.print("Enter new path (Enter '\\\\' instead of '\\'): ");
+                    System.out.print("Enter new path: ");
                     path = sc.nextLine();
                 }
 
@@ -457,13 +493,13 @@ public class Main {
                             "\nAdd another customer ?" +
                             "\n\t1.YES" +
                             "\n\t2.No" +
-                            "Choice: ");
+                            "\n\tChoice: ");
 
                     int answer = sc.nextInt();
                     sc.nextLine();
 
                     if(answer == 2) {
-                        System.out.print("Enter path (Enter '\\\\' instead of '\\'): ");
+                        System.out.print("Enter path: ");
                         String path = sc.nextLine();
 
                         if(write(path, array)) {
@@ -472,8 +508,10 @@ public class Main {
                         } else {
                             System.out.println("File has not been written");
                         }
-                    } else if(answer != 1)
+                    } else if(answer != 1) {
                         System.out.println("INVALID RANGE");
+                        return;
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");

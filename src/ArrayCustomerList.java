@@ -73,6 +73,7 @@ public class ArrayCustomerList {
         return null;
     }
 
+
     public Customer binary_search(String customer_name) {
         if(isEmpty()) return null;
 
@@ -145,7 +146,21 @@ public class ArrayCustomerList {
             Customer key = customers_array[pass];
 
             while(index >= 0
-            && customers_array[index].compareTo(customers_array[pass])) {
+                    && customers_array[index].compareTo(customers_array[pass])) {
+                customers_array[index+1] = customers_array[index];
+                index--;
+            }
+
+            customers_array[index+1] = key;
+        }
+    }
+
+    public void selection_sort_for_id() {
+        for(int pass = 1; pass <= top; pass++) {
+            int index = pass - 1;
+            Customer key = customers_array[pass];
+
+            while(index >= 0 && customers_array[index].get_contract_id() > customers_array[pass].get_contract_id()) {
                 customers_array[index+1] = customers_array[index];
                 index--;
             }
