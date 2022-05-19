@@ -39,6 +39,7 @@ public class CustomerLinkedList {
         } else if(head.data.get_name().equals(customer_name)) {
             head = head.next;
             filled--;
+            return true;
         } else {
             Node previous = head, pointer = head.next;
 
@@ -51,6 +52,7 @@ public class CustomerLinkedList {
 
                 pointer = pointer.next;
                 previous = previous.next;
+                return true;
             }
         } return false;
     }
