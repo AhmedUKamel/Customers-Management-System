@@ -203,6 +203,26 @@ public class CustomerLinkedList {
         }
     }
 
+    public void bubble_sort_for_id() {
+        for (int pass = 0; pass < filled; pass++ ) {
+
+            Node pointer = head;
+            Node next = head.next;
+
+            for (int step = 0; step < filled - 1; step++) {
+
+                if (pointer.data.get_contract_id() > next.data.get_contract_id()) {
+                    Customer temp = pointer.data;
+                    pointer.data = next.data;
+                    next.data = temp;
+                }
+
+                pointer = next;
+                next = next.next;
+            }
+        }
+    }
+
     // Selection Sort
     public void selection_sort() {
         Node pointer = head;

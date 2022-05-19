@@ -10,6 +10,7 @@ public class Main {
     // Main Function
     public static void main(String [] args) {
 //        run();
+//        test();
         test2();
 //        Customer a = new Customer("A", 0, "", "", 0, 0);
 //        Customer b = new Customer("B", 0, "", "", 0, 0);
@@ -28,7 +29,7 @@ public class Main {
 //        if(result != null)
 //            System.out.println(result.toString());
         array.display();
-        array.selection_sort_for_id();
+        array.bubble_sort_for_id();
         System.out.println();
         System.out.println();
         array.display();
@@ -45,7 +46,7 @@ public class Main {
 //        if(result != null)
 //            System.out.println(result.toString());
         array.display();
-        array.selection_sort_for_id();
+        array.bubble_sort_for_id();
         System.out.println();
         System.out.println();
         array.display();
@@ -116,6 +117,7 @@ public class Main {
                     System.out.println("INVALID RANGE");
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -143,6 +145,7 @@ public class Main {
                     System.out.println("INVALID RANGE");
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -161,8 +164,8 @@ public class Main {
 
                 return;
             } catch (Exception e) {
-                System.out.println(e.getMessage());
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -175,7 +178,8 @@ public class Main {
                             "\n\t3.Delete customer" +
                             "\n\t4.Update customer details" +
                             "\n\t5.Save file" +
-                            "\n\t6.Back" +
+                            "\n\t6.Sort" +
+                            "\n\t7.Back" +
                             "\n\tChoice: ");
 
             try {
@@ -193,11 +197,14 @@ public class Main {
                 else if(answer == 5)
                     save_read_file(path, array);
                 else if(answer == 6)
+                    array.heap_sort();
+                else if(answer == 7)
                     return;
                 else
                     System.out.println("INVALID RANGE");
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -243,6 +250,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -302,6 +310,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }
@@ -432,8 +441,9 @@ public class Main {
                     System.out.println("INVALID RANGE");
                 }
             } catch (Exception e) {
-                    System.out.println("INVALID INPUT");
-                }
+                System.out.println("INVALID INPUT");
+                sc.nextLine();
+            }
         }
     }
 
@@ -458,6 +468,7 @@ public class Main {
                 return;
             } catch (Exception e) {
                 System.out.println("INVALID INPUT");
+                sc.nextLine();
             }
         }
     }

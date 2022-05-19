@@ -121,6 +121,16 @@ public class ArrayCustomerList {
                 }
     }
 
+    public void bubble_sort_for_id() {
+        for(int pass = 0; pass <= top; pass++)
+            for(int step = 0; step < pass; step++)
+                if(customers_array[step].get_contract_id() > customers_array[step+1].get_contract_id()) {
+                    Customer temp = customers_array[step];
+                    customers_array[step] = customers_array[step+1];
+                    customers_array[step+1] = temp;
+                }
+    }
+
     // Selection Sort
     public void selection_sort() {
         for(int pass = 0; pass <= top; pass++) {
